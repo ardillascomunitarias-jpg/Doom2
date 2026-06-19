@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Trigger2 : MonoBehaviour
+public class TriggerEvent : MonoBehaviour
 {
    [SerializeField]
    private UnityEvent onTriggered;
