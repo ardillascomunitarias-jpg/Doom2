@@ -21,7 +21,7 @@ public class EnemyFollow : Enemy
 
     public override void TakeDamage()
     {
-        SoundManager.instance.Play("damage");
+        SoundManager.instance.Play("cacodemon_damage2");
         if (!isFollowing) return; 
         isFollowing = false; 
         base.TakeDamage();
@@ -37,7 +37,7 @@ public class EnemyFollow : Enemy
 
     public override void Die()
     {
-         SoundManager.instance.Play("cacodemon_die");
+         SoundManager.instance.Play("diecacodemon");
         isFollowing = false;
         base.Die();
     }
