@@ -22,6 +22,7 @@ private float nextFireTime = 0f;
 
 public override void OnEnable()
     {
+        base.OnEnable();
         nextFireTime = 0f;
         animator.Play("Appear", 1, 0f);
         SoundManager.instance.Play("MancubusAppear");
