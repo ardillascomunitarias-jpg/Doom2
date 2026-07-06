@@ -8,7 +8,7 @@ private readonly HashSet<GameObject> activeObjects = new HashSet<GameObject>();
 public IReadOnlyCollection<GameObject> ActiveObjects => activeObjects;
 [SerializeField]
 private GameObject prefab;
-public GameObject Prefab{set => prefab = value;}
+public GameObject Prefab { set => prefab = value; }
 private GameObject currentObject;
 public GameObject CurrentObject => currentObject;
 public void InstantiateObject(Vector3 position)

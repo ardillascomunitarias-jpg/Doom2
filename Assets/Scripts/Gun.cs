@@ -89,7 +89,9 @@ public class Gun : MonoBehaviour
         }
         Vector3 direction = (targetPoint - transform.position).normalized;
         bulletPivot.forward = direction;
-        GameObject bullet = Instantiate(bulletPrefab, bulletPivot.position, bulletPivot.rotation);
+        GameObject bullet = PoolManager.Instance.GetObject(bulletPrefab, bulletPivot.position);
+        bullet.SetActive(false);
+        bullet.transform.position = bulletPivot.position;
         bullet.transform.LookAt(targetPoint);
         SoundManager.instance.Play(gunData.DisparoSoundName);
         animator.Play("Shoot", 0, 0f);

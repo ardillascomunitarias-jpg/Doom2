@@ -2,29 +2,28 @@ using UnityEngine;
 
 
 public class Bullet : MonoBehaviour
-
 {
 
-[SerializeField]
+ [SerializeField]
+ private float speed = 20f;
+ protected float damage = 10f;
+ public float Damage { set { damage = value; }}
+ private Rigidbody rb;
 
-private float speed = 20f;
+ private void Awake() 
+ {
+    rb = GetComponent<Rigidbody>();
+ }
+ void OnEnable()
+  {
+    rb.angularVelocity = Vector3.zero;
+    rb.linearVelocity = Vector3.zero;
+    rb.linearVelocity = transform.forward * speed;
+  }
 
-protected float damage = 10f;
-
-public float Damage { set { damage = value; }}
-
-void OnEnable()
-
-{
-
- GetComponent<Rigidbody>().linearVelocity = transform.forward * speed;
-
-}
-
-public virtual void OnCollisionEnter(Collision collision)
+   public virtual void OnCollisionEnter(Collision collision)
     {
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
-
 
 }
