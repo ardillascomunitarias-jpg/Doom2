@@ -93,6 +93,7 @@ public class Gun : MonoBehaviour
         bullet.SetActive(false);
         bullet.transform.position = bulletPivot.position;
         bullet.transform.LookAt(targetPoint);
+        bullet.SetActive(true);
         SoundManager.instance.Play(gunData.DisparoSoundName);
         animator.Play("Shoot", 0, 0f);
     }
