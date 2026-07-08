@@ -5,30 +5,24 @@ using UnityEngine.UI;
 public class Player : MonoBehaviour
 {
     [SerializeField]
-
     private Transform gunPosition;
     [SerializeField]
-
     private InputManager inputManager;
     [SerializeField]
-
     private Text ammoText;
     [SerializeField]
-
-
     private UnityEvent onGunGrabbed;
     [SerializeField]
-
     private UnityEvent onGunDropped;
-
+    private Health health;
+    private Rigidbody rb;
     private Gun currentGun;
-
     private void Start()
     {
-        onGunDropped?.Invoke();
-        GetComponent<Health>().InitializeHealth();
+        rb = GetComponent<Rigidbody>();
+        health.InitializeHealth();
+       
     }
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Gun") && currentGun == null)
@@ -39,7 +33,6 @@ public class Player : MonoBehaviour
           currentGun.OnGunEmpty.AddListener(DropGun);
         }
     }
-
     private void Update ()
     {
         if (currentGun != null)
@@ -51,7 +44,6 @@ public class Player : MonoBehaviour
             }
         }
     }
-
     public void DropGun()
     {
         if(currentGun == null) return;
@@ -59,10 +51,18 @@ public class Player : MonoBehaviour
         currentGun = null; 
         onGunDropped?.Invoke();
     }
-
     public void PushBack(Transform enemy, float force)
     {
         Vector3 pushDirection = (transform.position - enemy.position).normalized;
-        GetComponent<Rigidbody>().AddForce(pushDirection * force, ForceMode.Impulse);
+        rb.AddForce(pushDirection * force, ForceMode.Impulse);
+    }
+    public void Die()
+    {
+        DropGun();
+        GetComponent<FirstPersonMovement>().enabled = false; 
+        GetComponentInChildren<FirstPersonLook>().enabled = false; 
+        rb.isKinematic = true; 
+        Cursor.visible =true; 
+        Cursor.lockState = CursorLockMode.None; 
     }
 }

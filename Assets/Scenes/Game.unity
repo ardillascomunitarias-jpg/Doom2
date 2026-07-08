@@ -5975,7 +5975,7 @@ GameObject:
   - component: {fileID: 1174982974}
   - component: {fileID: 1174982973}
   m_Layer: 5
-  m_Name: Quit
+  m_Name: QuitButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5998,7 +5998,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 13.999977, y: -313}
+  m_AnchoredPosition: {x: 212, y: -294}
   m_SizeDelta: {x: 915, y: 345.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1174982973
@@ -6044,7 +6044,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1174982974}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1966474258}
+        m_TargetAssemblyTypeName: SceneController, Assembly-CSharp
+        m_MethodName: LoadSceneWithFade
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Menu
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1174982974
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6280,7 +6292,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: You lose
+  m_Text: You Lose
 --- !u!222 &1226840925
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7570,7 +7582,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 14, y: 21.1}
+  m_AnchoredPosition: {x: -205, y: -25}
   m_SizeDelta: {x: 915, y: 345.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1599696615
@@ -7616,7 +7628,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1599696616}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1966474258}
+        m_TargetAssemblyTypeName: SceneController, Assembly-CSharp
+        m_MethodName: LoadSceneWithFade
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Game
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1599696616
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9208,9 +9232,9 @@ RectTransform:
   - {fileID: 2005384895}
   - {fileID: 1155440501}
   - {fileID: 40664265}
-  - {fileID: 508803070}
   - {fileID: 541596278}
   - {fileID: 903538573}
+  - {fileID: 508803070}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -10261,16 +10285,28 @@ MonoBehaviour:
   onDeath:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1966474258}
-        m_TargetAssemblyTypeName: SceneController, Assembly-CSharp
-        m_MethodName: LoadSceneWithFade
+      - m_Target: {fileID: 136877096812344741}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: Die
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 903538575}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: Play
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Game
+          m_StringArgument: Show
           m_BoolArgument: 0
         m_CallState: 2
   onDamageTaken:
