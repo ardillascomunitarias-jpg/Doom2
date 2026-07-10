@@ -28,16 +28,14 @@ public override void OnEnable()
         SoundManager.instance.Play("MancubusAppear");
         transform.position = new Vector3(transform.position.x, 0f, transform.position.z);
     }
-    
-
     private bool IsInRange()
     {
         return Vector3.Distance(transform.position, player.transform.position) <= range;
     }
-
     private void Update()
     {
         if(health.CurrentHealth <= 0) return;
+        if(CheckWin()) return;
         if (IsInRange())
         {
             isShooting = true;

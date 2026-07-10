@@ -19,8 +19,10 @@ public class Player : MonoBehaviour
     private Gun currentGun;
     private void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        onGunDropped?.Invoke();
+        health = GetComponent<Health>();
         health.InitializeHealth();
+        rb = GetComponent<Rigidbody>();
        
     }
     private void OnTriggerEnter(Collider other)

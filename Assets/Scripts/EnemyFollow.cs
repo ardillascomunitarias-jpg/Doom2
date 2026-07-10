@@ -44,11 +44,11 @@ public class EnemyFollow : Enemy
 
     private void Update()
     {
-        if (!isFollowing)return;
+        if (!isFollowing) return;
+        if (CheckWin())return;
         Vector3 targePosition = new Vector3(player.position.x, yPosition, player.position.z);
         transform.position = Vector3.MoveTowards(transform.position,targePosition,speed*Time.deltaTime);
-           
-    transform.LookAt(targePosition);
+        transform.LookAt(targePosition);
     } 
         
     private void OnCollisionEnter(Collision collision)

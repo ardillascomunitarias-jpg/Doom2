@@ -1,71 +1,73 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
-
-public class Gun : MonoBehaviour
+using System.Collections;
+ 
+public class Gun: MonoBehaviour
 {
-   [SerializeField]
-
-   private Animator animator;
-   [SerializeField]
-
-   private Rotate rotateScript; 
-   [SerializeField]
-
-   private GunData gunData;
-   [SerializeField]
-
-   private Transform bulletPivot;
-   [SerializeField]
-
-   private GameObject bulletPrefab;
-
-   private Text ammoText;
-
-   private float nextFireTime;
-
-   private int totalBullets;
-
-   private int cartridgeBullets;
-
-   private UnityEvent onGunEmpty = new UnityEvent();
-
-   public UnityEvent OnGunEmpty
+[SerializeField]
+private Animator animator;
+[SerializeField]
+private Rotate rotateScript;
+[SerializeField]
+private GunData gunData;
+[SerializeField]
+private Transform bulletPivot;
+[SerializeField]
+private GameObject bulletPrefab;
+private Text ammoText;
+private float nextFireTime;
+private int totalBullets;
+private int cartridgeBullets;
+private UnityEvent onGunEmpty = new UnityEvent();
+public UnityEvent OnGunEmpty
     {
         set => onGunEmpty = value;
-        get => onGunEmpty; 
+        get => onGunEmpty;
     }
-
-   public void GrabGun(Transform gunPosition, Text bulletsText)
+public void GrabGun (Transform gunPosition, Text bulletsText)
+{
+    ammoText = bulletsText;
+    nextFireTime = 0f;
+    totalBullets = gunData.totalBullets;
+    transform.SetParent(gunPosition);
+    transform.localPosition = Vector3.zero;
+    transform.localRotation = Quaternion.identity;
+    animator. Play ("Grab", 0, 0f);
+    rotateScript.canRotate = false;
+    gameObject.GetComponent<Collider>().enabled = false;
+    ChargeGun(false);
+}
+public void ChargeGun(bool playAnimation=true)
     {
-        ammoText = bulletsText;
-        nextFireTime = 0f;
-        totalBullets = gunData.totalBullets;
-        transform.SetParent(gunPosition);
-        transform.localPosition = Vector3.zero;
-        transform.localRotation = Quaternion.identity;
-        animator.Play("Grab", 0, 0f);
-        rotateScript.canRotate = false;
-        gameObject.GetComponent<Collider>().enabled = false;
-        ChargeGun(false); 
-    }
-
-    public void ChargeGun(bool playAnimation = true)
-    {
-        
-        if (totalBullets <= 0 || cartridgeBullets == gunData.cartridgeSize) return;
+        if (totalBullets<=0 || cartridgeBullets == gunData.cartridgeSize) return;
         SoundManager.instance.Play(gunData.RecargaSoundName);
+     if (playAnimation)
+        {
+            StartCoroutine(ChargeGunCoroutine());
+        }
+        else
+        {
+            AddBullets();
+        }
+    }
+     private IEnumerator ChargeGunCoroutine()
+    {
+        animator.Play("Charge", 0, 0f);
+        yield return null;
+        yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
+        AddBullets();
+    }
+    private void AddBullets()
+    {
         cartridgeBullets = Mathf.Min(gunData.cartridgeSize, totalBullets);
         totalBullets -= cartridgeBullets;
-        if (playAnimation) animator.Play("Charge", 0, 0f);
         UpdateAmmoText();
     }
-
     private void UpdateAmmoText()
     {
-        ammoText.text = $"{cartridgeBullets} / {totalBullets}";
+        ammoText.text = $"{cartridgeBullets}/{totalBullets}";
     }
-
     private void DamageEnemy(GameObject enemy)
     {
         if (enemy.CompareTag("Enemy"))
@@ -76,7 +78,7 @@ public class Gun : MonoBehaviour
     public void Shoot()
     {
         float rayDistance = 1000f;
-        Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+        Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f,0.5f,0));
         Vector3 targetPoint;
         if (Physics.Raycast(ray, out RaycastHit hit, rayDistance))
         {
@@ -97,17 +99,17 @@ public class Gun : MonoBehaviour
         SoundManager.instance.Play(gunData.DisparoSoundName);
         animator.Play("Shoot", 0, 0f);
     }
-
+ 
     public void HandleFire(bool pressed, bool held)
     {
-        if (gunData.gunType == GunType.Automatic)
+        if(gunData.gunType == GunType.Automatic)
         {
             if (held)
             {
                 TryShoot();
             }
         }
-        else if (gunData.gunType == GunType.SemiAutomatic)
+       else if(gunData.gunType == GunType.SemiAutomatic)
         {
             if (pressed)
             {
@@ -115,17 +117,16 @@ public class Gun : MonoBehaviour
             }
         }
     }
-
+ 
     private void TryShoot()
     {
-
-        if (totalBullets <= 0 && cartridgeBullets <= 0)
+        if(totalBullets <= 0 && cartridgeBullets <= 0)
         {
             SoundManager.instance.Play(gunData.ArmaDropSoundName);
-            onGunEmpty?.Invoke();
+           onGunEmpty?.Invoke();
             return;
         }
-        if (cartridgeBullets > 0 && Time.time >= nextFireTime)
+        if(cartridgeBullets > 0 && Time.time >= nextFireTime)
         {
             Shoot();
             cartridgeBullets--;
@@ -133,5 +134,4 @@ public class Gun : MonoBehaviour
             nextFireTime = Time.time + 1f / gunData.fireRate;
         }
     }
-    
 }

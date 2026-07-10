@@ -346,8 +346,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2.5437012, y: 2.4239035, z: 2.1345825}
-  m_Center: {x: 1.0556641, y: -0.76328135, z: 0.04232788}
+  m_Size: {x: 2.5065918, y: 2.4239035, z: 2.8480225}
+  m_Center: {x: -0.034057617, y: -0.76328135, z: -0.90966797}
 --- !u!54 &2273375839559636218
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -419,6 +419,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  onHeal:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!95 &3799225789879767635
 Animator:
   serializedVersion: 7
