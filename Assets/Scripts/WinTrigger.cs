@@ -15,7 +15,7 @@ public class WinTrigger : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             hasTriggered = true;
-            
+
             winText.SetActive(true);
             
             SoundManager.instance.Play("WinnerSonido");
