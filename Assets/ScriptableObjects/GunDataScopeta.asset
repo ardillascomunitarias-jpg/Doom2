@@ -18,6 +18,6 @@ MonoBehaviour:
   reloadTime: 3
   cartridgeSize: 1
   gunType: 1
-  DisparoSoundName: 
-  RecargaSoundName: 
-  ArmaDropSoundName: 
+  DisparoSoundName: ShootShotgun
+  RecargaSoundName: GrabShotgun
+  ArmaDropSoundName: Dissapear
