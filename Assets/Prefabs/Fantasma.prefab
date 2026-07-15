@@ -307,8 +307,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.98339844, y: 1.0623837, z: 1.0748901}
-  m_Center: {x: -0.014038086, y: 0.8289466, z: 0.029388428}
+  m_Size: {x: 0.98339844, y: 2.9465241, z: 1.0748901}
+  m_Center: {x: -0.014038086, y: -0.113123596, z: 0.029388428}
 --- !u!54 &236284882698958547
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -380,6 +380,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  onHeal:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!95 &8013308196687325186
 Animator:
   serializedVersion: 7
@@ -418,7 +421,7 @@ MonoBehaviour:
   damage: 20
   speed: 1
   yPosition: 2
-  pushForce: 200
+  pushForce: 10
 --- !u!1 &7896676043528759312
 GameObject:
   m_ObjectHideFlags: 0
