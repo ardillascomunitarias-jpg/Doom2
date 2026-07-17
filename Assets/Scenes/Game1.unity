@@ -20029,7 +20029,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawner
   enemySpawns:
-  - enemyPrefab: {fileID: 6083756842751997529, guid: 69fea38ebca07ef49aa49c6e012b6d3c, type: 3}
+  - enemyPrefab: {fileID: 3235395906293826395, guid: 0f8ca8892ef83ff4b9ac197f7b564de4, type: 3}
     spawnPoint: {fileID: 1909870608}
   - enemyPrefab: {fileID: 8924612622017381971, guid: 2ac53547c19565144a14b2c0779aa511, type: 3}
     spawnPoint: {fileID: 227305463}
