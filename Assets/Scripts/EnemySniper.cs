@@ -20,6 +20,7 @@ private bool IsInRange => Vector3.Distance(transform.position, player.position) 
 private bool isShooting = false; 
 public override void OnEnable()
     {
+        timerText.text = "";
         isShooting  = false;
         base.OnEnable();
         laserBeam.ActivateLaser(false);
@@ -53,10 +54,12 @@ public override void OnEnable()
         float duration = aimTime;
         while (duration > 0f)
         {
+            SoundManager.instance.Play("sniper_timer");
             duration--;
             timerText.text = duration.ToString();
             yield return new WaitForSeconds(1f);
         }
+        timerText.text = "";
         animator.Play("Fire", 0, 0f);
         SoundManager.instance.Play("sniper_shot2");
         laserBeam.ActivateLaser(false);
