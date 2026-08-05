@@ -11,6 +11,7 @@ private Animator animator;
 private Rotate rotateScript;
 [SerializeField]
 private GunData gunData;
+public GunData GunData => gunData;
 [SerializeField]
 private Transform bulletPivot;
 [SerializeField]
@@ -22,23 +23,32 @@ private float nextFireTime;
 private int totalBullets;
 private int cartridgeBullets;
 private UnityEvent onGunEmpty = new UnityEvent();
+public bool IsGunFull => totalBullets == gunData.totalBullets;
 public UnityEvent OnGunEmpty
     {
         set => onGunEmpty = value;
         get => onGunEmpty;
     }
-public void GrabGun (Transform gunPosition, Text bulletsText)
-{
-    ammoText = bulletsText;
-    nextFireTime = 0f;
-    totalBullets = gunData.totalBullets;
+    public void ChargeTotalBullets()
+    {
+        totalBullets = gunData.totalBullets;
+    }
+    public void GrabGun(Transform gunPosition,Text bulletsText, bool isNew = true)
+    {
+        ammoText = bulletsText;
+        nextFireTime = 0f;
+        if (isNew)
+        {
+            totalBullets = gunData.totalBullets;
+            ChargeGun(false);
+        }
     transform.SetParent(gunPosition);
     transform.localPosition = Vector3.zero;
     transform.localRotation = Quaternion.identity;
     animator. Play ("Grab", 0, 0f);
     rotateScript.canRotate = false;
     gameObject.GetComponent<Collider>().enabled = false;
-    ChargeGun(false);
+    UpdateAmmoText();
 }
 public void ChargeGun(bool playAnimation=true)
     {

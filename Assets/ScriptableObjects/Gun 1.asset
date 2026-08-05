@@ -21,3 +21,4 @@ MonoBehaviour:
   DisparoSoundName: Disparo
   RecargaSoundName: Recarga
   ArmaDropSoundName: ArmaDrop
+  sprite: {fileID: 21300000, guid: 8e5f6873f202fb3469d79f7f7f1a14f6, type: 3}

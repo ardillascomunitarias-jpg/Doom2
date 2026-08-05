@@ -1,19 +1,12 @@
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.UI;
+
 
 public class Player : MonoBehaviour
 {
     [SerializeField]
-    private Transform gunPosition;
+    private GunManager gunManager;
     [SerializeField]
-    private InputManager inputManager;
-    [SerializeField]
-    private Text ammoText;
-    [SerializeField]
-    private UnityEvent onGunGrabbed;
-    [SerializeField]
-    private UnityEvent onGunDropped;
     private Health health;
     private Rigidbody rb;
     public float CurrentHealth => health.CurrentHealth;
@@ -28,39 +21,14 @@ public class Player : MonoBehaviour
     }
     private void Start()
     {
-        onGunDropped?.Invoke();
-        health = GetComponent<Health>();
         health.InitializeHealth();
-        rb = GetComponent<Rigidbody>();
-       
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Gun") && currentGun == null)
+        if (other.CompareTag("Gun"))
         {
-          currentGun = other.GetComponent<Gun>();
-          currentGun.GrabGun(gunPosition, ammoText);
-          onGunGrabbed?.Invoke(); 
-          currentGun.OnGunEmpty.AddListener(DropGun);
+          gunManager.GrabGun(other.GetComponent<Gun>());
         }
-    }
-    private void Update ()
-    {
-        if (currentGun != null)
-        {
-            currentGun.HandleFire(inputManager.LeftButtonPressed, inputManager.LeftButtonHeld);
-            if (inputManager.RightButtonPressed)
-            {
-                currentGun.ChargeGun();
-            }
-        }
-    }
-    public void DropGun()
-    {
-        if(currentGun == null) return;
-        Destroy(currentGun.gameObject);
-        currentGun = null; 
-        onGunDropped?.Invoke();
     }
     public void PushBack(Transform enemy, float force)
     {
@@ -69,7 +37,7 @@ public class Player : MonoBehaviour
     }
     public void Die()
     {
-        DropGun();
+        gunManager.DropAllGuns();
         GetComponent<FirstPersonMovement>().enabled = false; 
         GetComponentInChildren<FirstPersonLook>().enabled = false; 
         rb.isKinematic = true; 
