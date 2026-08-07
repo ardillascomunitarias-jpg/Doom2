@@ -303,7 +303,7 @@ GameObject:
   - component: {fileID: 4119509544595734444}
   - component: {fileID: 3799225789879767635}
   - component: {fileID: 7602173477955240643}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cacodemon
   m_TagString: Enemy
   m_Icon: {fileID: 0}

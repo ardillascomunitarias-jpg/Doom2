@@ -534,7 +534,7 @@ GameObject:
   - component: {fileID: 5362510488087946810}
   - component: {fileID: 1379239902203560906}
   - component: {fileID: 4552836312013677929}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Mancubus
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -577,6 +577,7 @@ MonoBehaviour:
   shootPivot: {fileID: 2715086099115320379}
   bulletPrefab: {fileID: 7346487427477497626, guid: 8259fb662bd59b94084a4100adc2c0bc, type: 3}
   fireParticlesPrefab: {fileID: 4021103657954561961, guid: b3e5240a7bbf40841b648a5acbd79dd8, type: 3}
+  speed: 10
 --- !u!65 &5362510488087946810
 BoxCollider:
   m_ObjectHideFlags: 0

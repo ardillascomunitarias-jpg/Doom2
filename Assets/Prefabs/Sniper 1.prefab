@@ -526,9 +526,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LaserBeam
   startPoint: {fileID: 291577442311855396}
-  target: {fileID: 0}
   laserMesh: {fileID: 270063283172209294}
   radius: 0.1
+  targetOffset: {x: 0, y: 0.5, z: 0}
 --- !u!1 &7097205021638288316
 GameObject:
   m_ObjectHideFlags: 0
@@ -617,7 +617,7 @@ GameObject:
   - component: {fileID: 2510224281479358933}
   - component: {fileID: 6221659415612426897}
   - component: {fileID: 5121271159732210762}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Sniper 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}

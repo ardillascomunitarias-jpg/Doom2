@@ -2873,7 +2873,7 @@ GameObject:
   - component: {fileID: 4112783129214435499}
   - component: {fileID: 4645974080854724755}
   - component: {fileID: 63602858332676185}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: EnemyDark
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -2915,6 +2915,7 @@ MonoBehaviour:
   fireRate: 2
   shootPivot: {fileID: 2861330582920975278}
   bulletPrefab: {fileID: 4452343122182756936, guid: 5a46ed27f8bd63946aea0ec3e0b4b950, type: 3}
+  fireParticlesPrefab: {fileID: 0}
   speed: 3
 --- !u!65 &4112783129214435499
 BoxCollider:
