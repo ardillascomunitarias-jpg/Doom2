@@ -577,7 +577,7 @@ MonoBehaviour:
   shootPivot: {fileID: 2715086099115320379}
   bulletPrefab: {fileID: 7346487427477497626, guid: 8259fb662bd59b94084a4100adc2c0bc, type: 3}
   fireParticlesPrefab: {fileID: 4021103657954561961, guid: b3e5240a7bbf40841b648a5acbd79dd8, type: 3}
-  speed: 10
+  speed: 1
 --- !u!65 &5362510488087946810
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -597,8 +597,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.8674316, y: 3.9067059, z: 1}
-  m_Center: {x: -0.08880615, y: 1.4533529, z: 0}
+  m_Size: {x: 1.8674316, y: 3.4204042, z: 1}
+  m_Center: {x: -0.08880615, y: 1.6965038, z: 0}
 --- !u!54 &1379239902203560906
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -622,7 +622,7 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0

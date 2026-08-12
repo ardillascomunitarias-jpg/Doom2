@@ -50,6 +50,7 @@ public class Enemy : MonoBehaviour
 
     public virtual void Die()
     {
+        rb.isKinematic = true;
         GetComponent<Collider>().enabled = false;
         onDied?.Invoke();
         StopAllCoroutines();

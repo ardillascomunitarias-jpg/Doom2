@@ -123,7 +123,7 @@ public class GunManager : MonoBehaviour
         {
             currentGun.ChargeGun();
         }
-        if (currentGun.IsAimingEnemy())
+        if (currentGun && currentGun.IsAimingEnemy())
         {
             scope.ChangeToAimingColor();
         }
