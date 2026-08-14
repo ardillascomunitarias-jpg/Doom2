@@ -21,3 +21,4 @@ MonoBehaviour:
   DisparoSoundName: ShootShotgun
   RecargaSoundName: GrabShotgun
   ArmaDropSoundName: Dissapear
+  sprite: {fileID: 21300000, guid: 4a76f52ffdc499640ac96c6118c5b59f, type: 3}
